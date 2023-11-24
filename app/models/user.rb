@@ -7,5 +7,8 @@ class User < ApplicationRecord
   validates :name, presence: true
 
   has_many :room_users
+  # ↓中間テーブルと紐付ける記述
   has_many :rooms, through: :room_users
+
+  has_many :messages
 end
