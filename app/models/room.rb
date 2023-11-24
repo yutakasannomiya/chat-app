@@ -1,9 +1,8 @@
 class Room < ApplicationRecord
-  has_many :room_users
-  # ↓中間テーブルと紐付ける記述
-  has_many :users, through: :room_users
-
-  has_many :messages
+  has_many :room_users, dependent: :destroy
+  # ↓ 中間テーブルとの紐付け
+  has_many :users, through: :room_users  
+  has_many :messages, dependent: :destroy
 
   validates :name, presence: true
 end
